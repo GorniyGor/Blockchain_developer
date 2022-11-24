@@ -1,0 +1,9 @@
+- Install Node.js
+- Install lite-server `npm install -g lite-server`
+- Deploy the contract (Mood.sol) on the Goerli Testnet. 
+  - Make sure your Metamask is connected to the Goerli Testnet. 
+  - Make sure you select the right compiler version to match the solidity contract. (In the compile tab)
+  - Compile the code using the "Solidity Compiler" tab. Note that it may take a moment to load the compiler 
+  - Deploy the contract under the "Deploy and Run Transactions" tab 
+  - Under the Deployed Contracts section, you can test out your functions on the Remix Run tab to make sure your contract works as expected!
+- On http://127.0.0.1:3000/ you can see your dapp, set "mood" and check result in logs of webpage
