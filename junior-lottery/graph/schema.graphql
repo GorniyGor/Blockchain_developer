@@ -1,0 +1,8 @@
+type Game @entity {
+  id: ID!
+  maxPlayers: Int!
+  entryFee: BigInt!
+  players: [Bytes!]!
+  winner: Bytes
+  requestId: Bytes
+}
