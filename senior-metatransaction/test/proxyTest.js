@@ -3,6 +3,7 @@ const { ethers } = require("hardhat");
 const { arrayify, parseEther } = require("ethers/lib/utils");
 const { BigNumber } = require("ethers");
 const { MY_BOYS_DEVS_ADDRESS, MBD_HOLDER_ADDRESS } = require("../constants")
+require("dotenv").config({ path: ".env" });
 
 describe("MetaTokenTransfer", function () {
 
@@ -16,12 +17,9 @@ describe("MetaTokenTransfer", function () {
     const tokenSenderContract = await MetaTokenSenderFactory.deploy();
     await tokenSenderContract.deployed();
 
-    const [userAddress, relayerAddress, recipientAddress] = await ethers.getSigners();
-
-    //Top up user acc by MBD tokens
-    const accWithTokens = await ethers.getImpersonatedSigner(MBD_HOLDER_ADDRESS);
-    await MyBoysDevsToken.connect(accWithTokens)
-        .transfer(userAddress.address, await MyBoysDevsToken.balanceOf(accWithTokens.address));
+    const [_, relayerAddress, recipientAddress] = await ethers.getSigners();
+    //Top up user with MBD tokens
+    const userAddress = new ethers.Wallet(process.env.PRIVATE_KEY, ethers.provider)
 
     const userTokenContractInstance = MyBoysDevsToken.connect(userAddress);
 
@@ -89,12 +87,10 @@ describe("MetaTokenTransfer", function () {
     const tokenSenderContract = await MetaTokenSenderFactory.deploy();
     await tokenSenderContract.deployed();
 
-    const [userAddress, relayerAddress, recipientAddress] = await ethers.getSigners();
+    const [_, relayerAddress, recipientAddress] = await ethers.getSigners();
+    //Top up user with MBD tokens
+    const userAddress = new ethers.Wallet(process.env.PRIVATE_KEY, ethers.provider)
 
-    //Top up user acc by MBD tokens
-    const accWithTokens = await ethers.getImpersonatedSigner(MBD_HOLDER_ADDRESS);
-    await MyBoysDevsToken.connect(accWithTokens)
-        .transfer(userAddress.address, await MyBoysDevsToken.balanceOf(accWithTokens.address));
 
     const userTokenContractInstance = MyBoysDevsToken.connect(userAddress);
 
@@ -172,12 +168,9 @@ describe("MetaTokenTransfer", function () {
     const tokenSenderContract = await MetaTokenSenderFactory.deploy();
     await tokenSenderContract.deployed();
 
-    const [userAddress, relayerAddress, recipientAddress] = await ethers.getSigners();
-
-    //Top up user acc by MBD tokens
-    const accWithTokens = await ethers.getImpersonatedSigner(MBD_HOLDER_ADDRESS);
-    await MyBoysDevsToken.connect(accWithTokens)
-        .transfer(userAddress.address, await MyBoysDevsToken.balanceOf(accWithTokens.address));
+    const [_, relayerAddress, recipientAddress] = await ethers.getSigners();
+    //Top up user with MBD tokens
+    const userAddress = new ethers.Wallet(process.env.PRIVATE_KEY, ethers.provider)
 
     const userTokenContractInstance = MyBoysDevsToken.connect(userAddress);
 
